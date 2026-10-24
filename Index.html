@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дружбицкий Игорь — Портфолио</title>
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --accent-color: #2c5f8a;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+            --border-color: #e0e4e8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                text-align: left;
+                justify-content: flex-start;
+                gap: 30px;
+            }
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            background-color: #2c3e50;
+        }
+
+        .header-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header-info .subtitle {
+            font-size: 16px;
+            color: #a0b4c8;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            .header {
+                padding: 20px;
+            }
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 15px;
+            color: var(--text-color);
+            font-style: italic;
+            background-color: #f8fafc;
+            padding: 15px 20px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #eef2f6;
+            color: var(--accent-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #d0dbe5;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 2px solid var(--card-bg);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2px;
+        }
+
+        .timeline-company {
+            font-size: 15px;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .timeline-desc ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 4px;
+        }
+
+        .achievement {
+            color: #1e6b3e;
+            font-weight: 500;
+        }
+
+        /* Education */
+        .edu-item {
+            margin-bottom: 15px;
+        }
+
+        .edu-item h4 {
+            font-size: 16px;
+            color: var(--primary-color);
+        }
+
+        .edu-item p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Шапка -->
+    <header class="header">
+        <img src="https://via.placeholder.com/150" alt="Фото профиля" class="avatar">
+        <div class="header-info">
+            <h1>Дружбицкий Игорь</h1>
+            <div class="subtitle">Главный инженер проекта | Руководитель направления</div>
+            <div class="contact-info">
+                <a href="tel:+79044943995">📞 +7 (904) 494-39-95</a>
+                <a href="mailto:xodobox@inbox.ru">✉️ xodobox@inbox.ru</a>
+                <a href="#">📍 Тюмень</a>
+                <a href="#">💬 Viber</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="content">
+
+        <!-- Обо мне -->
+        <section class="section">
+            <h2 class="section-title">Обо мне</h2>
+            <p class="about-text">
+                Специализируюсь на реанимации «застрявших» строительных проектов и жестком аудите проектной документации. 
+                Умею работать в условиях жесткого рыночного давления (высокие ставки, дефицит бюджетов). 
+                Мой приоритет — экономика проекта, соблюдение нормативов и ввод объекта в эксплуатацию, а не создание корпоративного комфорта. 
+                Привык защищать интересы инвестора, принимать непопулярные решения и доводить сложные объекты до финала, когда другие ГИПы опускают руки.
+            </p>
+        </section>
+
+        <!-- Ключевые навыки -->
+        <section class="section">
+            <h2 class="section-title">Ключевые компетенции</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">ГИП (НОПРИЗ ПИ-077256)</span>
+                <span class="skill-tag">Управление проектами</span>
+                <span class="skill-tag">EPC / Stage-Gate</span>
+                <span class="skill-tag">Технический аудит ПСД</span>
+                <span class="skill-tag">Оптимизация CAPEX</span>
+                <span class="skill-tag">Главгосэкспертиза</span>
+                <span class="skill-tag">AutoCAD / BIM (3D)</span>
+                <span class="skill-tag">Гидравлические расчеты (PipeSim)</span>
+                <span class="skill-tag">Промышленная безопасность</span>
+                <span class="skill-tag">Управление рисками</span>
+                <span class="skill-tag">Гражданское строительство</span>
+                <span class="skill-tag">Нефтегазовый комплекс</span>
+            </div>
+        </section>
+
+        <!-- Опыт работы -->
+        <section class="section">
+            <h2 class="section-title">Опыт работы (18 лет 5 месяцев)</h2>
+            <div class="timeline">
+
+                <!-- ООО Север-западная инжиниринговая компания -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Март 2026 — Настоящее время</div>
+                    <div class="timeline-title">Главный инженер проекта</div>
+                    <div class="timeline-company">ООО «Северо-западная инжиниринговая компания»</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Управление проектированием гражданских (ЖК до 100 000 кв.м) и промышленных объектов (нефтегаз).</li>
+                            <li>Организация полного цикла: от изысканий до стадии РД.</li>
+                            <li>Сопровождение и защита решений в Главгосэкспертизе.</li>
+                            <li>Технический аудит ПСД для оптимизации CAPEX.</li>
+                            <li class="achievement">Сформировал дорожные карты для вывода на экспертизу 3 крупных инфраструктурных объектов.</li>
+                            <li class="achievement">Оптимизировал структуру разделов ПД для быстрого согласования с РСО.</li>
+                            <li class="achievement">Настроил сквозной контроль границ ответственности субподрядчиков, исключив перерасход бюджета.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- СИБУР -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Август 2025 — Март 2026</div>
+                    <div class="timeline-title">Руководитель проекта авторского надзора и полевого проектирования</div>
+                    <div class="timeline-company">СИБУР, Группа компаний (ЗапСибНефтехим)</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Руководство группой полевых инженеров (5 главных специалистов).</li>
+                            <li>Координация авторского надзора и полевого проектирования установки ДГП-2.</li>
+                            <li>Оперативное управление изменениями в ПД/РД по запросам со стройплощадки.</li>
+                            <li class="achievement">Обеспечил бесперебойное техническое сопровождение строительства.</li>
+                            <li class="achievement">Сократил сроки согласования изменений благодаря налаживанию связи с проектным институтом.</li>
+                            <li class="achievement">Систематизировал обработку более 3000 запросов на изменения, минимизировав простои подрядчиков.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ньютон Инжиниринг -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Август 2023 — Август 2025</div>
+                    <div class="timeline-title">Главный инженер проекта (Служба технического Заказчика)</div>
+                    <div class="timeline-company">Ньютон Инжиниринг</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Руководство полным циклом проектирования (от изысканий до ввода в эксплуатацию).</li>
+                            <li>Ведение 3 крупных проектов ЖК с паркингами (до 100 000 кв.м).</li>
+                            <li>Управление пулом подрядчиков, контроль качества проектных решений.</li>
+                            <li>Защита интересов инвестора, оптимизация себестоимости (Value Engineering).</li>
+                            <li class="achievement">Успешно ввел объект в эксплуатацию в сжатые сроки, устранив критические ошибки предыдущего подрядчика.</li>
+                            <li class="achievement">Внедрил систему контроля качества ПД, что свело к минимуму брак и переделки.</li>
+                            <li class="achievement">Оптимизировал затраты на внутреннюю отделку без снижения класса жилья.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Газпромнефть-НТЦ -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Август 2021 — Август 2023</div>
+                    <div class="timeline-title">Руководитель проекта внедрения и тиражирования технологий капстроительства</div>
+                    <div class="timeline-company">Газпромнефть-НТЦ</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Управление инновационными проектами капстроительства на ранних стадиях.</li>
+                            <li>Формирование кросс-функциональных команд для НИОКР и концептуального проектирования.</li>
+                            <li>Расчет CAPEX, разработка финансовых моделей (NPV, IRR), защита на инвесткомитетах.</li>
+                            <li class="achievement">Вывел на этап реализации 2 крупных инновационных проекта в области капстроительства месторождений.</li>
+                            <li class="achievement">Обосновал бюджеты проектов и достиг расчетной экономической эффективности в 1,3 млрд рублей.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- АО НИПИГАЗ -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Май 2017 — Июнь 2018</div>
+                    <div class="timeline-title">Эксперт по координации проектно-изыскательских работ ЕРС</div>
+                    <div class="timeline-company">АО НИПИГАЗ (СИБУР) — Амурский ГХК</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Управление ПИР на мега-проекте в рамках ЕРС-контракта.</li>
+                            <li class="achievement">Снизил проектные риски за счет внедрения системы экспертного сопровождения строительства.</li>
+                            <li class="achievement">Обеспечил выполнение графиков ПИР, координируя пул субподрядчиков и тендерные процедуры.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Экопроект -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Июнь 2018 — Август 2021</div>
+                    <div class="timeline-title">Главный инженер проектов</div>
+                    <div class="timeline-company">ООО «Экопроект»</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Техническое руководство полным циклом строительства объектов обустройства месторождений нефти и газа.</li>
+                            <li>Руководство разработкой ПИР и РД для УПН, УПСВ, НС, КС, промысловых нефтепроводов.</li>
+                            <li>Подготовка ТЗ, календарных графиков, программ работ.</li>
+                            <li>Работа с органами госэкспертизы (опыт только положительных заключений ГЭ).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ЭнергоИнвест -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Февраль 2016 — Май 2017</div>
+                    <div class="timeline-title">Ведущий инженер-технолог</div>
+                    <div class="timeline-company">ООО МП «ЭнергоИнвест»</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Проектирование технологической части площадочных объектов: УПН, УПСВ, УПГ, КПГ, ГРС, кустовые площадки.</li>
+                            <li>Проектирование линейных объектов: магистральные нефтегазопроводы (включая подводные переходы).</li>
+                            <li>Технический аудит и экспертиза отклонений от норм на ГПЗ.</li>
+                            <li>Участие в экспертизе промышленной безопасности ОПО.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Образование -->
+        <section class="section">
+            <h2 class="section-title">Образование и квалификация</h2>
+            <div class="edu-item">
+                <h4>Высшее — Тюменский государственный нефтегазовый университет (2009)</h4>
+                <p>Институт транспорта. Специальность: «Проектирование, сооружение и эксплуатация газонефтепроводов и газонефтехранилищ».</p>
+            </div>
+            <div class="edu-item">
+                <h4>Повышение квалификации (2013)</h4>
+                <p>Аттестация по промышленной безопасности (ООО «ЗапСибэнерго», А.1, Б 2.3).</p>
+            </div>
+            <div class="edu-item">
+                <h4>Профессиональные допуски</h4>
+                <p>НОПРИЗ: ПИ-077256 (Главный инженер проекта).</p>
+            </div>
+        </section>
+
+        <!-- Дополнительно -->
+        <section class="section">
+            <h2 class="section-title">Дополнительная информация</h2>
+            <div class="timeline-desc">
+                <ul>
+                    <li><strong>Языки:</strong> Русский (родной), Английский (B1 — средний).</li>
+                    <li><strong>Водительские права:</strong> Категория B, имеется собственный автомобиль.</li>
+                    <li><strong>Формат работы:</strong> Удалённо, вахта, командировки.</li>
+                    <li><strong>Программное обеспечение:</strong> AutoCAD (все версии), GeoniCS, MapInfo 9.5, Компас 3D, BIM (3D) Проектирование, CS Model Studio трубопроводы (3D), Autocad plant 3d (P&ID), Гидросистема 3.81 R6, Invensys upstream optimization suite «PipePhase» (аналог PipeSim), Pipe Flow Expert, AspenTech Hysys 7.2/8.6, Excel (расчеты).</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <p>© 2026 Дружбицкий Игорь. Портфолио составлено на основе резюме.</p>
+    </footer>
+</div>
+
+</body>
+</html>
